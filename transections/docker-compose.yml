@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: Docker/Dockerfile
+    ports:
+      - '80:80'    
+      - '8090:8090' 
