@@ -1,4 +1,4 @@
-// Account.tsx
+
 declare const __webpack_init_sharing__: any;
 declare const __webpack_share_scopes__: any;
 (async () => {
@@ -6,7 +6,7 @@ declare const __webpack_share_scopes__: any;
   await __webpack_init_sharing__('default');
   await __webpack_share_scopes__.default;
 
-  // Now import React and others
+
   const React = await import('react');
   const ReactDOM = await import('react-dom/client');
   const App = (await import('./router/AppRouter')).default;

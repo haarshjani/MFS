@@ -2,17 +2,48 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 
+
+
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+     alias: {
+      "react-native$": require.resolve("react-native-web"),
+       '@react-native-vector-icons/material-design-icons': 'react-native-vector-icons/MaterialCommunityIcons',
+      '@expo/vector-icons/MaterialCommunityIcons': 'react-native-vector-icons/MaterialCommunityIcons',
+    },
+     extensions: [".web.js", ".js", ".jsx", ".ts", ".tsx"],
   },
   module: {
     rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        use: ['babel-loader', 'ts-loader'],
-        exclude: /node_modules/,
+       {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules[/\\](?!react-native-vector-icons)/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              babelrc: false,
+              configFile: false,
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-flow",
+                "@babel/preset-typescript",
+              ],
+              plugins: [
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-proposal-object-rest-spread",
+              ],
+            },
+          },
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,
@@ -23,27 +54,29 @@ module.exports = {
         test: /\.js$/,
         loader: 'source-map-loader',
       },
+      {
+        test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+        type: 'asset/resource'
+      }
     ],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/', 
+    publicPath: 'auto', 
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
-      name: "transection",
+      name: "transections",
       filename: "remoteEntry.js",
       exposes: {
-        "./TransectionsApp": "./src/TransectionsRemote"
+        "./TransectionsApp": "./src/RemoteTransection"
       },
-      remotes: {
-       
-      },
-      shared: { react: { singleton: true , requiredVersion :"^18.3.1", eager : false}, "react-dom": { singleton: true ,requiredVersion :"^18.3.1", eager : false} }
+      shared: { react: { singleton: true , requiredVersion :"^19.1.1", eager : false}, "react-dom": { singleton: true ,requiredVersion :"^19.1.1", eager : false} }
+
 
     })
   ],

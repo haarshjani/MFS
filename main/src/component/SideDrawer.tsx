@@ -1,6 +1,7 @@
 import React, { useState, useRef, ReactNode } from 'react';
 import { View, Animated, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Appbar, Drawer } from 'react-native-paper';
+import { useNavigate } from '../hooks/useCrossPlatform';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const DRAWER_WIDTH = 240;
@@ -11,6 +12,7 @@ interface SideDrawerPropsTypes {
 const SideDrawer = ({children}:SideDrawerPropsTypes) => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const drawerAnim = useRef(new Animated.Value(-DRAWER_WIDTH)).current;
+  const navigate = useNavigate()
 
   const toggleDrawer = () => {
     if (drawerVisible) {
@@ -31,7 +33,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
 
   const onOverlayPress = () => toggleDrawer();
 
-  // Styles inside component
+  
   const styles = {
     appbar: {
       backgroundColor: 'white',
@@ -45,7 +47,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
       top: 0,
       height: SCREEN_HEIGHT,
       width: DRAWER_WIDTH,
-      backgroundColor: 'transperent',
+      backgroundColor: 'white',
       paddingTop: 16,
       zIndex: 10,
       elevation: 5,
@@ -86,7 +88,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
                 style={{ backgroundColor: '#65aefd80' }}
                 label="Customer"
               />
-              <Drawer.Item label="Accounts" />
+              <Drawer.Item label="Accounts" onPress={() => navigate('/accounts')} />
               <Drawer.Item label="Transactions" />
             </Animated.View>
 

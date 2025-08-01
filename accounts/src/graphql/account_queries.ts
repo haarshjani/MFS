@@ -11,6 +11,12 @@ export const GET_ACCOUNTS = gql`
       Customer{
         name
       }
+      Transections{
+      id
+      type
+      amount
+      date
+    }
     
     }
   }

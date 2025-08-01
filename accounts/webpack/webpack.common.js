@@ -7,14 +7,43 @@ const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlug
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+     alias: {
+      "react-native$": require.resolve("react-native-web"),
+       '@react-native-vector-icons/material-design-icons': 'react-native-vector-icons/MaterialCommunityIcons',
+      '@expo/vector-icons/MaterialCommunityIcons': 'react-native-vector-icons/MaterialCommunityIcons',
+    },
+     extensions: [".web.js", ".js", ".jsx", ".ts", ".tsx"],
   },
   module: {
     rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        use: ['babel-loader', 'ts-loader'],
-        exclude: /node_modules/,
+       {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules[/\\](?!react-native-vector-icons)/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              babelrc: false,
+              configFile: false,
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-flow",
+                "@babel/preset-typescript",
+              ],
+              plugins: [
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-proposal-object-rest-spread",
+              ],
+            },
+          },
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,
@@ -25,6 +54,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'source-map-loader',
       },
+      {
+        test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+        type: 'asset/resource'
+      }
     ],
   },
   output: {

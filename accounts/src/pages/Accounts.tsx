@@ -1,6 +1,6 @@
 import React from "react";
 
-import AccountList from "../component/AccountList";
+import AccountList from "../component/Accounts/AccountList";
 
 
 

@@ -15,12 +15,12 @@ import AddTransection from "../component/AddTransection";
 const AppRouter = () => {
     return (
         <>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <Router>
             <Routes>
                 <Route path="/accounts" element={<Accounts />} />
-                <Route path="/:customerId/add" element={<AddAccount/>} />
-                <Route path="/:customerId/accounts" element={<Accounts />} />
+                {/* <Route path="/:customerId/add" element={<AddAccount/>} />
+                <Route path="/:customerId/accounts" element={<Accounts />} /> */}
                 
                 {/* <Route path="/transections" element={<TransectionList />}/>
                 <Route path="/:accountId/transections" element={<TransectionList />}/>

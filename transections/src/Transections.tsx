@@ -1,19 +1,31 @@
-import React from "react";
-import App from "./router/AppRouter";
-import { ApolloProvider } from '@apollo/client';
-import client from './apollo/client';
-import { Provider } from "react-redux";
-import { store } from "./redux/store";
+// Account.tsx
+declare const __webpack_init_sharing__: any;
+declare const __webpack_share_scopes__: any;
+(async () => {
+  
+  await __webpack_init_sharing__('default');
+  await __webpack_share_scopes__.default;
 
-const Transections =()=> {
+  // Now import React and others
+  const React = await import('react');
+  const ReactDOM = await import('react-dom/client');
+  const App = (await import('./router/AppRouter')).default;
+  const { ApolloProvider } = await import('@apollo/client');
+  const client = (await import('./apollo/client')).default;
+  const { Provider } = await import('react-redux');
+  const { store } = await import('./redux/store');
 
-return (
+  const Transections = () => (
     <Provider store={store}>
-        <ApolloProvider client={client}>
-            <App />
-        </ApolloProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
     </Provider>
-)
-}
+  );
 
-export default Transections;
+  const rootEl = document.getElementById('root');
+  if (rootEl) {
+    const root = ReactDOM.createRoot(rootEl);
+    root.render(<Transections />);
+  }
+})();

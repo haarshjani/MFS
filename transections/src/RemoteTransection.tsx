@@ -9,7 +9,7 @@ import { store } from './redux/store';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as PaperProvider } from 'react-native-paper'
 
-const RemoteAccounts = () => (
+const RemoteTransection = () => (
   <Provider store={store}>
     <ApolloProvider client={client}>
       <SafeAreaProvider>
@@ -22,4 +22,4 @@ const RemoteAccounts = () => (
   </Provider>
 );
 
-export default RemoteAccounts;
+export default RemoteTransection;

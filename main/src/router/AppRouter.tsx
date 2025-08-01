@@ -25,7 +25,7 @@ const AppRouter = () => {
                 <Route path="/" element={<DashBoard />} />
                 {/* <Route path="/customers" element={<Customers />} />
                 <Route path="/customer/:customerId/edit" element={<EditCustomer />} />  */}
-                <Route path="/accounts" element={<AccountCard/>} />
+                <Route path="/accounts" element={<RemoteAccouts/>} />
                 {/* <Route path="/account/:customerId/add" element={<RemoteAccouts/>} />
                 <Route path="/:customerId/accounts" element={<RemoteAccouts />} />
                 <Route path="/addcustomer" element={<AddCustomer />} />

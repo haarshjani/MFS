@@ -16,16 +16,6 @@ module.exports = {
   module: {
     rules: [
       {
-        // include: [
-        //   srcPath,
-        //   path.resolve(__dirname, "../node_modules/react-native-vector-icons"),
-        //   path.resolve(__dirname, "../node_modules/react-native-paper"),
-        //   path.resolve(
-        //     __dirname,
-        //     "../node_modules/react-native-safe-area-context"
-        //   ),
-        //   path.resolve(__dirname, "../node_modules/react-native-web"),
-        // ],
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules[/\\](?!react-native-vector-icons)/,
         use: [
@@ -38,6 +28,7 @@ module.exports = {
                 "@babel/preset-env",
                 "@babel/preset-react",
                 "@babel/preset-typescript",
+                "@babel/preset-flow",
               ],
               plugins: [
                 "@babel/plugin-proposal-class-properties",

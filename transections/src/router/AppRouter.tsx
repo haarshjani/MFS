@@ -17,18 +17,14 @@ const AppRouter = () => {
         <>
         <CssBaseline />
         <Router>
-             <Drawer />
             <Routes>
-                <Route path="/" element={<DashBoard />} />
-                <Route path="/customers" element={<Customers />} />
-                <Route path="/customer/:customerId/edit" element={<EditCustomer />} /> 
                 <Route path="/accounts" element={<Accounts />} />
-                <Route path="/account/:customerId/add" element={<AddAccount/>} />
+                <Route path="/:customerId/add" element={<AddAccount/>} />
                 <Route path="/:customerId/accounts" element={<Accounts />} />
-                <Route path="/addcustomer" element={<AddCustomer />} />
-                <Route path="/transections" element={<TransectionList />}/>
+                
+                {/* <Route path="/transections" element={<TransectionList />}/>
                 <Route path="/:accountId/transections" element={<TransectionList />}/>
-                <Route path="/:accountId/transection/:type" element={<AddTransection />}/>
+                <Route path="/:accountId/transection/:type" element={<AddTransection />}/> */}
                       
             </Routes>
         </Router>

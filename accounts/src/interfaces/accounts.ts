@@ -1,8 +1,10 @@
 
 import { Customer } from "./customer";
+import { ITransection } from "./transection";
 
 
 type CustomerOptional = Partial<Customer>;
+type TransectionsOptional = Partial<ITransection>[]
 
 interface Accounts {
   id: string;
@@ -11,6 +13,7 @@ interface Accounts {
   balance: number;
   currency: string;
   Customer?: CustomerOptional
+  Transections? : TransectionsOptional
 }
 
 export { Accounts, CustomerOptional };
