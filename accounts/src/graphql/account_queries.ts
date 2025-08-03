@@ -10,6 +10,7 @@ export const GET_ACCOUNTS = gql`
       currency
       Customer{
         name
+        email
       }
       Transections{
       id

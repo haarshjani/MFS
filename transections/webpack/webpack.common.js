@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 
 
-
+const root = path.resolve(__dirname, "../");
+const srcPath = path.resolve(root, "src");
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
@@ -18,7 +19,14 @@ module.exports = {
     rules: [
        {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules[/\\](?!react-native-vector-icons)/,
+       include: [
+               srcPath,
+               path.dirname(require.resolve('react-native-vector-icons/package.json')),
+               path.dirname(require.resolve('@expo/vector-icons/package.json')),
+               path.dirname(require.resolve('react-native-safe-area-context/package.json')),
+               path.dirname(require.resolve('react-native-paper/package.json')),
+               path.resolve(__dirname, '../../ui-kit/src')
+             ],
         use: [
           {
             loader: "babel-loader",
@@ -69,15 +77,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-    new ModuleFederationPlugin({
-      name: "transections",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./TransectionsApp": "./src/RemoteTransection"
-      },
-      shared: { react: { singleton: true , requiredVersion :"^19.1.1", eager : false}, "react-dom": { singleton: true ,requiredVersion :"^19.1.1", eager : false} }
+    // new ModuleFederationPlugin({
+    //   name: "transections",
+    //   filename: "remoteEntry.js",
+    //   exposes: {
+    //     "./TransectionsApp": "./src/RemoteTransection"
+    //   },
+    //   shared: { react: { singleton: true , requiredVersion :"^19.1.1", eager : false}, "react-dom": { singleton: true ,requiredVersion :"^19.1.1", eager : false} }
 
 
-    })
+    // })
   ],
 };

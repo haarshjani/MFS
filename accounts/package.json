@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "accounts",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,8 @@
     "react-native-web": "^0.21.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.7.1",
-    "react-router-native": "^6.30.0"
+    "react-router-native": "^6.30.0",
+    "ui-kit": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",

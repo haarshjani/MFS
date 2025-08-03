@@ -2,6 +2,7 @@ import React, { useState, useRef, ReactNode } from 'react';
 import { View, Animated, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Appbar, Drawer } from 'react-native-paper';
 import { useNavigate } from '../hooks/useCrossPlatform';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const DRAWER_WIDTH = 240;
@@ -71,7 +72,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
   return (
     <>
       <Appbar.Header style={styles.appbar}>
-        <Appbar.Action icon="menu" onPress={toggleDrawer} />
+        <Appbar.Action  icon={(props) => <MaterialCommunityIcons name="home" {...props} />} onPress={toggleDrawer} />
         <Appbar.Content title="CustomerPortal" />
       </Appbar.Header>
 
@@ -84,12 +85,15 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
                 { transform: [{ translateX: drawerAnim }] },
               ]}
             >
-              <Drawer.Item
-                style={{ backgroundColor: '#65aefd80' }}
-                label="Customer"
-              />
-              <Drawer.Item label="Accounts" onPress={() => navigate('/accounts')} />
-              <Drawer.Item label="Transactions" />
+              <Drawer.Item label="Accounts" onPress={() => {
+                toggleDrawer()
+                navigate('/accounts')
+                }} />
+              <Drawer.Item label="Transactions"  onPress={() => {
+                navigate('/transections')
+                toggleDrawer()
+              }
+                }/>
             </Animated.View>
 
             <TouchableWithoutFeedback >

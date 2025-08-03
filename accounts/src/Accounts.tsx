@@ -1,4 +1,7 @@
 
+import "./styles/App.css"
+
+
 declare const __webpack_init_sharing__: any;
 declare const __webpack_share_scopes__: any;
 (async () => {
@@ -10,17 +13,14 @@ declare const __webpack_share_scopes__: any;
   const React = await import('react');
   const ReactDOM = await import('react-dom/client');
   const App = (await import('./router/AppRouter')).default;
-  const { ApolloProvider } = await import('@apollo/client');
-  const client = (await import('./apollo/client')).default;
-  const { Provider } = await import('react-redux');
-  const { store } = await import('./redux/store');
+  const Providers = await import("./Providers");
+  
 
   const Accounts = () => (
-    <Provider store={store}>
-      <ApolloProvider client={client}>
+   <Providers>
         <App />
-      </ApolloProvider>
-    </Provider>
+      
+    </Providers>
   );
 
   const rootEl = document.getElementById('root');

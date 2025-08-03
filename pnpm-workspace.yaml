@@ -1,0 +1,6 @@
+
+packages:
+  - 'ui-kit'
+  - 'main'
+  - 'accounts'
+  - 'transections'

@@ -8,16 +8,25 @@ module.exports = {
   resolve: {
     alias: {
       "react-native$": require.resolve("react-native-web"),
-       '@react-native-vector-icons/material-design-icons': 'react-native-vector-icons/MaterialCommunityIcons',
+      '@react-native-vector-icons/material-design-icons': 'react-native-vector-icons/MaterialCommunityIcons',
       '@expo/vector-icons/MaterialCommunityIcons': 'react-native-vector-icons/MaterialCommunityIcons',
     },
-    extensions: [".web.js", ".js", ".jsx", ".ts", ".tsx"],
+    extensions: [
+    '.web.tsx', '.web.ts', '.web.js',
+    '.tsx', '.ts', '.js', '.jsx'
+  ],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules[/\\](?!react-native-vector-icons)/,
+      include: [
+        srcPath,
+        path.dirname(require.resolve('react-native-vector-icons/package.json')),
+        path.dirname(require.resolve('@expo/vector-icons/package.json')),
+        path.dirname(require.resolve('react-native-safe-area-context/package.json')),
+        path.dirname(require.resolve('react-native-paper/package.json')),
+      ],
         use: [
           {
             loader: "babel-loader",
@@ -25,23 +34,15 @@ module.exports = {
               babelrc: false,
               configFile: false,
               presets: [
-                "@babel/preset-env",
-                "@babel/preset-react",
+                "module:metro-react-native-babel-preset",
                 "@babel/preset-typescript",
-                "@babel/preset-flow",
               ],
               plugins: [
                 "@babel/plugin-proposal-class-properties",
                 "@babel/plugin-proposal-object-rest-spread",
               ],
             },
-          },
-          {
-            loader: "ts-loader",
-            options: {
-              transpileOnly: true,
-            },
-          },
+          }
         ],
       },
       {
@@ -51,6 +52,7 @@ module.exports = {
       {
         enforce: "pre",
         test: /\.js$/,
+        exclude: /node_modules[/\\](?!react-native-vector-icons).*/,
         loader: "source-map-loader",
       },
       {
