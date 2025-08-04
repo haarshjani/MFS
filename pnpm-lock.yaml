@@ -23,6 +23,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.1
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.1.9)(react@19.1.1))(@types/react@19.1.9)(react@19.1.1)
+      '@expo/vector-icons':
+        specifier: ^14.1.0
+        version: 14.1.0(expo-font@13.3.2(expo@53.0.20(@babel/core@7.28.0)(graphql@16.11.0)(react-native@0.80.2(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1))(react@19.1.1))(react-native@0.80.2(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)
       '@fontsource/inter':
         specifier: ^5.2.6
         version: 5.2.6
@@ -62,6 +65,9 @@ importers:
       react-native-safe-area-context:
         specifier: ^5.5.2
         version: 5.5.2(react-native@0.80.2(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)
+      react-native-svg:
+        specifier: ^15.12.1
+        version: 15.12.1(react-native@0.80.2(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1))(react@19.1.1)
       react-native-vector-icons:
         specifier: ^10.3.0
         version: 10.3.0
@@ -437,12 +443,6 @@ importers:
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
-      react:
-        specifier: ^19.1.1
-        version: 19.1.1
-      react-dom:
-        specifier: ^19.1.1
-        version: 19.1.1(react@19.1.1)
       react-native:
         specifier: ^0.80.2
         version: 0.80.2(@babel/core@7.28.0)(@types/react@19.1.9)(react@19.1.1)
@@ -492,6 +492,12 @@ importers:
       css-loader:
         specifier: ^7.1.2
         version: 7.1.2(webpack@5.101.0)
+      react:
+        specifier: ^19.1.1
+        version: 19.1.1
+      react-dom:
+        specifier: ^19.1.1
+        version: 19.1.1(react@19.1.1)
       style-loader:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.101.0)
@@ -7579,12 +7585,12 @@ snapshots:
   '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.101.0)':
     dependencies:
       webpack: 5.101.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.101.0)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.0)
 
   '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.101.0)':
     dependencies:
       webpack: 5.101.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.101.0)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.0)
 
   '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack-dev-server@5.2.2)(webpack@5.101.0)':
     dependencies:
@@ -11275,7 +11281,7 @@ snapshots:
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     optionalDependencies:
-      webpack-cli: 6.0.1(webpack@5.101.0)
+      webpack-cli: 6.0.1(webpack-dev-server@5.2.2)(webpack@5.101.0)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild

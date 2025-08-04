@@ -2,7 +2,7 @@ import React, { useState, useRef, ReactNode } from 'react';
 import { View, Animated, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Appbar, Drawer } from 'react-native-paper';
 import { useNavigate } from '../hooks/useCrossPlatform';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const DRAWER_WIDTH = 240;
@@ -72,7 +72,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
   return (
     <>
       <Appbar.Header style={styles.appbar}>
-        <Appbar.Action  icon={(props) => <MaterialCommunityIcons name="home" {...props} />} onPress={toggleDrawer} />
+        <Appbar.Action  icon="menu" onPress={toggleDrawer} />
         <Appbar.Content title="CustomerPortal" />
       </Appbar.Header>
 

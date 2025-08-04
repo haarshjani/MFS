@@ -25,6 +25,8 @@ module.exports = {
                path.dirname(require.resolve('@expo/vector-icons/package.json')),
                path.dirname(require.resolve('react-native-safe-area-context/package.json')),
                path.dirname(require.resolve('react-native-paper/package.json')),
+               path.dirname(require.resolve('@expo/vector-icons/package.json')),
+               path.dirname(require.resolve('expo-modules-core/package.json')),
                path.resolve(__dirname, '../../ui-kit/src')
              ],
         use: [

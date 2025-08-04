@@ -7,22 +7,25 @@ import { store } from "./redux/store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Platform } from "react-native";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const Providers = ({ children }: { children: ReactNode }) => {
-    const [isFontLoaded, setIsFontLoaded] = useState(false);
+  
 
-  useEffect(() => {
-    MaterialCommunityIcons.loadFont().then(() => setIsFontLoaded(true));
-  }, []);
-  if (!isFontLoaded) return null;
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
         <SafeAreaProvider>
         <PaperProvider >
-          
-            {children}
+          <>
+           {Platform.OS === 'web' && ( <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
+  />
+)}
+     {children}
+          </>
+           
         
         </PaperProvider>
       </SafeAreaProvider>
