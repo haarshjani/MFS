@@ -55,6 +55,7 @@ From the project root directory:
 ```bash
 pnpm install     # Install all dependencies
 pnpm start       # Start all development servers
+```
 
 # 📦 Production Strategy & Integration
 
