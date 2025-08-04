@@ -20,7 +20,7 @@ module.exports = merge(common, {
       name: "accounts",
       filename: "remoteEntry.js",
       exposes: {
-        "./AccountList": "./src/component/Accounts/AccountList.tsx",
+        "./AccountList": "./src/pages/Accounts.tsx",
         "./AccountsApp": "./src/RemoteAccount",
       },
       shared: {

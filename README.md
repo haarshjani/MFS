@@ -19,6 +19,7 @@ This system uses a microfrontend architecture, with each part of the application
 
 The repository is structured as a **monorepo** using [`pnpm`](https://pnpm.io/) with workspace configuration defined in `pnpm-workspace.yaml`.
 
+
 ### 🧩 Apps and Packages
 
 - **Main App**  
@@ -33,6 +34,9 @@ The repository is structured as a **monorepo** using [`pnpm`](https://pnpm.io/) 
 - **ui-kit**  
   Shared library for UI components and utility functions, used across all micro frontends.
 
+- **data**  
+  A librery contains fixture data with file named db.js for the **json-graphql-server**
+  service running on port 8090
 ---
 
 ## 🏛 Architecture
@@ -53,6 +57,9 @@ The project leverages **custom Webpack Module Federation** to manage the shell a
 From the project root directory:
 
 ```bash
+pnpm add -g json-graphql-server #Install graphql API
+json-graphql-server data/db.js --port 8090. #Runs graphql API
+
 pnpm install     # Install all dependencies
 pnpm start       # Start all development servers
 ```

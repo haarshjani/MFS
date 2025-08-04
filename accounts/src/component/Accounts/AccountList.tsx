@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 
 import AccountCard from "./AccountCard";
-import {  useParams } from "ui-kit";
+import {  useParams } from "../../hooks/useCrossPlatform";
 import { useQuery } from "@apollo/client";
 import { GET_ACCOUNTS } from "../../graphql/account_queries";
 import useDebounce from "../../hooks/useDebounce";
@@ -11,17 +11,19 @@ import { Accounts } from "../../interfaces/accounts";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccounts } from "../../redux/Slices/AccountSlice";
 import { List, Text, TextInput } from "react-native-paper";
-import { View } from "react-native";
 
-const AccountList = () => {
+
+interface AccountListPropsTypes{
+  debouncedACSearch: string;
+}
+const AccountList = ({debouncedACSearch}:AccountListPropsTypes) => {
 
   const {customerId } = useParams();
  
   console.log("customerId:",  customerId);
 
   const accountsData =useSelector((state:any) =>state.accounts)
-  const [acSearchInput, setACSearch] = useState<string>("");
-  const debouncedACSearch = useDebounce(acSearchInput, 500);
+
    const { loading, error, data } = useQuery(GET_ACCOUNTS,{
     variables: { filter : {
       ...customerId && {customer_id : customerId || null},
@@ -53,22 +55,13 @@ const AccountList = () => {
       console.log("account data", accountsData);
 
     return(
-    <View>
-     <TextInput
-     style={{maxWidth : 300}}
-      mode="outlined"
-      placeholder="Account Number..."
-      right={<TextInput.Icon icon="search" />}
-      onChangeText={(newText) =>setACSearch(newText)
-      }
-    />
+    
     <List.Section>
         {
             accountsData.map((data : Accounts) =>  <AccountCard data={data}/>)
         }
         
     </List.Section>
-    </View>
   
     );
    
