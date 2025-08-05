@@ -17,7 +17,7 @@ const Accounts = () => {
      style={{maxWidth : 300}}
       mode="outlined"
       placeholder="Account Number..."
-      right={<TextInput.Icon icon="search" />}
+      right={<TextInput.Icon icon="magnify" />}
       onChangeText={(newText) =>setACSearch(newText)
       }
     />

@@ -7,9 +7,6 @@ import { useParams } from "ui-kit";
 
 const TransectionList = lazy(()=>import('transections/TransectionList')) 
 
-interface RemoteTransectionDetailsPropsTypes{
-  id:string;
-}
 
 const RemoteTransectionList = () => {
 

@@ -69,6 +69,7 @@ const TransectionCard = ({data}: TrasectionPorpsTypes) => {
     },
      outerCard: {
       borderWidth: 2,
+      marginVertical : 10,
       borderColor:data?.type?.toLowerCase()=== 'credit'?'rgba(99, 171, 99, 0.2)':'rgba(172, 60, 60, 0.2)',
       backgroundColor : data?.type?.toLowerCase()=== 'credit'?'rgba(99, 171, 99, 0.13)': 'rgba(172, 60, 60, 0.13)',
    

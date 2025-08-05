@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Platform } from "react-native";
+import MaterialCommunityIconsFont from 'react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf';
 
 
 const Providers = ({ children }: { children: ReactNode }) => {
@@ -18,11 +19,18 @@ const Providers = ({ children }: { children: ReactNode }) => {
         <SafeAreaProvider>
         <PaperProvider >
           <>
-           {Platform.OS === 'web' && ( <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
-  />
-)}
+           {Platform.OS === 'web' ? (
+      <style type="text/css">{
+         `
+  @font-face {
+    font-family: 'MaterialCommunityIcons';
+    src: url(${MaterialCommunityIconsFont}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+`
+      }</style>
+    ) : null}
      {children}
           </>
            

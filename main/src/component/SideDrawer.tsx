@@ -87,7 +87,7 @@ const SideDrawer = ({children}:SideDrawerPropsTypes) => {
             >
               <Drawer.Item label="Accounts" onPress={() => {
                 toggleDrawer()
-                navigate('/accounts')
+                navigate('/')
                 }} />
               <Drawer.Item label="Transactions"  onPress={() => {
                 navigate('/transections')

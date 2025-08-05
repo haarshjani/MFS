@@ -133,4 +133,11 @@ if (Platform.OS === 'web') {
     - Detox (for end-to-end testing)
 This separation can increase the time and effort required for test coverage.
 
+# > ⚠️ Future Improvements
+ - Use ***turborepo*** nextjs wtih expo to create basic project structure.
+ - Use GlueStick librery to achive creating basic project setups.
+ - Create common Context or redux store in ui-kit librery to share data across all projects
+ 
+
+
 

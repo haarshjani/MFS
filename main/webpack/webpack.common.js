@@ -60,13 +60,16 @@ module.exports = {
       {
         test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
         type: "asset/resource",
+        generator: {
+      filename: 'fonts/[name][ext]',
+    },
       },
     ],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/",
+    publicPath: "auto",
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -12,7 +12,6 @@ const Card = ({style, children}:CardPropsTyes) => {
         card: {
         margin: 10,
         borderRadius : 10,
-        
         padding : 2,
         ...style
     }

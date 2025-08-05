@@ -15,9 +15,9 @@ const AppRouter = () => {
         <Router>
              <SideDrawer>
             <Routes>
-                <Route path="/" element={<DashBoard />} />
-                
-                <Route path="/accounts" element={<AccountList />} />
+                {/* <Route path="/" element={<DashBoard />} />
+                 */}
+                <Route path="/" element={<AccountList />} />
                 <Route path="/transections" element={<RemoteTransectionList/>} />
                 <Route path="/transections/:transectionId/details" element={<RemoteTransectionDetails/>} />
                       
